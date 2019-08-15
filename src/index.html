@@ -9,6 +9,29 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBoDlu0Jutu5gQN7Q2CBj032O1VTeN8MTo",
+        authDomain: "react-firebase-chat-94a1c.firebaseapp.com",
+        databaseURL: "https://react-firebase-chat-94a1c.firebaseio.com",
+        projectId: "react-firebase-chat-94a1c",
+        storageBucket: "",
+        messagingSenderId: "243236228287",
+        appId: "1:243236228287:web:c1f91d27d89bef5e"
+    };
+    // Initialize Firebase
+    var firebase = firebase.initializeApp(firebaseConfig);
+    </script>
+
+    
     <div id="app"></div>
+
+</script>
 </body>
 </html>

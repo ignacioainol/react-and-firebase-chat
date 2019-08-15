@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class ChatRoom extends Component{
     constructor(){
         super();
@@ -7,12 +8,20 @@ class ChatRoom extends Component{
         this.submitMessage = this.submitMessage .bind(this);
         this.state = {
             message: '',
-            messages: [
-                {id: 0, text: 'hola'},
-                {id: 1, text: 'que tal'},
-                {id: 2, text: 'como estas'}
-            ]
+            messages: []
         }
+    }
+
+    componentDidMount(){
+        firebase.database().ref('messages/').on('value', snapshot => {
+            const currentMessages = snapshot.val();
+
+            if(currentMessages != null){
+                this.setState({
+                    messages: currentMessages
+                })
+            }
+        })
     }
 
     updateMessage(e){
@@ -28,11 +37,7 @@ class ChatRoom extends Component{
             text: this.state.message
         };
 
-        let listMessages = this.state.messages;
-        listMessages.push(message);
-        this.setState({
-            messages: listMessages
-        })
+        firebase.database().ref('messages/' + message.id).set(message);
 
         this.setState({message:''});
     }
